@@ -14,7 +14,7 @@ public class SwitchCase {
         int nilai = 90;
         
         switch(nilai){
-            case >=90:
+            case 90:
                 System.out.println("A");
                 break;
             case 80:
