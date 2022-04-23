@@ -1,0 +1,1 @@
+Enkapsulasi (Seperti Kapsul)
