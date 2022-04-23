@@ -1,0 +1,1 @@
+Tugas Inheritance di LMS
