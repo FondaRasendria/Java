@@ -25,11 +25,7 @@ public class main {
         menu();
         
     }
-    public static void loginkan(){
-        System.out.println("Masukkan ID Siswa");
-        int id = input.nextInt();
-        System.out.println("Selamat datang "+siswa.getNama(id));
-    }
+    
     public static void menu(){
         System.out.println("Masukkan ID Siswa");
         int id = input.nextInt();
