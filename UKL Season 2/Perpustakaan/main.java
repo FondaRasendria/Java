@@ -31,7 +31,7 @@ public class main {
         int id = input.nextInt();
         System.out.println("Selamat datang "+siswa.getNama(id));
         while(tetap){
-            System.out.println("-- Pelelangan --");
+            System.out.println("-- Perpustakaan --");
             System.out.println("1. List Buku");
             System.out.println("2. List Petugas");
             System.out.println("3. List Siswa");
