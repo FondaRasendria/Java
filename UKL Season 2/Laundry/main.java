@@ -26,12 +26,14 @@ public class main {
             System.out.println("Masukkan ID Anda");
             int id = input.nextInt();
             System.out.println("Selamat Datang "+client.getNama(id));
+            System.out.println("ID anda "+transaksi.getIDClient(id));
             menu(id);
         }
         else{
             System.out.println("Masukkan Nama");
             String nama = input.next();
             client.setNama(nama);
+            transaksi.setIDClient(transaksi.size());
             System.out.println("Masukkan Alamat");
             String alamat = input.next();
             client.setAlamat(alamat);
@@ -43,7 +45,19 @@ public class main {
             client.addSaldo(saldo);
             System.out.println("Terimakasih telah mendaftar "+nama);
             int i = client.getId(nama);
+            System.out.println("ID Anda "+transaksi.getIDClient(i));
             menu(i);
+        }
+    }
+    
+    public static void tampilLaundry(){
+        int n = jenislaundry.size();
+        for(int i=0;i<n;i++){
+            System.out.println("------------------------");
+            System.out.println("        "+jenislaundry.getLaundry(i));
+            System.out.println("Harga  = "+jenislaundry.getHarga(i));
+            System.out.println("Durasi = "+jenislaundry.getDurasi(i));
+            System.out.println("ID     = "+transaksi.getIDJenisLaundry(i));
         }
     }
     
@@ -58,7 +72,7 @@ public class main {
             System.out.print("Pilih menu: ");
             int menu = input.nextInt();
             if(menu==1){
-                jenislaundry.tampilLaundry();
+                tampilLaundry();
                 System.out.println("Ketik apapun dan enter untuk keluar");
                 key = input.next();
             }
@@ -73,14 +87,16 @@ public class main {
                 key = input.next();
             }
             else if(menu==4){
-                jenislaundry.tampilLaundry();
+                tampilLaundry();
                 System.out.println("Masukkan Id laundry yang diinginkan");
                 int laundry = input.nextInt();
-                int harga = jenislaundry.getHarga(laundry-1);
+                System.out.println("Masukkan berapa banyak laundry anda");
+                int banyak = input.nextInt();
+                int harga = jenislaundry.getHarga(laundry-1)*banyak;
                 if(client.getSaldo(id)>=harga){
                     System.out.println("----------Total----------");
-                    System.out.println("Jenis Laundry = "+jenislaundry.getLaundry(laundry-1));
-                    System.out.println("Total Harga   = "+jenislaundry.getHarga(laundry-1));
+                    System.out.println("Jenis Laundry = "+jenislaundry.getLaundry(laundry));
+                    System.out.println("Total Harga   = "+harga);
                     System.out.println("Durasi        = "+jenislaundry.getDurasi(laundry-1)+" menit");
                     client.setSaldo(id, client.getSaldo(id)-harga);
                     System.out.println("Terimakasih telah menggunkaan jasa kami");

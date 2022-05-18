@@ -16,6 +16,10 @@ public class JenisLaundry {
     private ArrayList<Integer> harga = new ArrayList<Integer>();
     private ArrayList<Integer> durasi = new ArrayList<Integer>();
     
+    public int size(){
+        return this.jenisLaundry.size();
+    }
+    
     public JenisLaundry(){
         this.jenisLaundry.add("Cuci Kering");
         this.harga.add(3000);
@@ -53,13 +57,4 @@ public class JenisLaundry {
         return this.durasi.get(id);
     }
     
-    public void tampilLaundry(){
-        int n = this.jenisLaundry.size();
-        for(int i=0;i<n;i++){
-            System.out.println("------------------------");
-            System.out.println("        "+getLaundry(i));
-            System.out.println("Harga  = "+getHarga(i));
-            System.out.println("Durasi = "+getDurasi(i));
-        }
-    }
 }

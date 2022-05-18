@@ -17,6 +17,10 @@ public class Client implements User{
     private ArrayList<String> telepon = new ArrayList<String>();
     private ArrayList<Integer> saldo = new ArrayList<Integer>();
     
+    public int size(){
+        return this.namaClient.size();
+    }
+    
     public Client(){
         this.namaClient.add("Fonda");
         this.alamat.add("Kediri");
