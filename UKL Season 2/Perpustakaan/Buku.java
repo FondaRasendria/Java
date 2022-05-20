@@ -16,6 +16,10 @@ public class Buku {
     private ArrayList<Integer> stok = new ArrayList<Integer>();
     private ArrayList<Integer> harga = new ArrayList<Integer>();
     
+    public int size(){
+        return this.namaBuku.size();
+    }
+    
     public Buku(){
         this.namaBuku.add("Vagabond");
         this.stok.add(4);

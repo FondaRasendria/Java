@@ -20,8 +20,6 @@ public class main {
     static String key;
     
     public static void main(String[] args){
-        String yakin;
-        
         menu();
         
     }
@@ -29,7 +27,7 @@ public class main {
     public static void menu(){
         System.out.println("Masukkan ID Siswa");
         int id = input.nextInt();
-        System.out.println("Selamat datang "+siswa.getNama(id));
+        System.out.println("Selamat datang "+siswa.getNama(peminjaman.getIDSiswa(id)));
         while(tetap){
             System.out.println("-- Perpustakaan --");
             System.out.println("1. List Buku");
@@ -62,7 +60,6 @@ public class main {
                 int ID = input.nextInt();
                 if(siswa.getStataus(ID)==true){
                     buku.setStok(ID, buku.getStok(ID)-1);
-                    peminjaman.setBuku(ID,false);
                     System.out.println("Terimakasih telah meminjam buku "+buku.getNama(ID));
                     siswa.setStatus(id, false);
                     System.out.println("Ketik apapun dan enter untuk keluar");
@@ -77,6 +74,20 @@ public class main {
             else if(menu==5){
                 System.out.println("Masukkan id buku yang ingin dibeli");
                 int ID = input.nextInt();
+                System.out.println("Masukkan Jumlah buku yang ingin dibeli");
+                int banyak = input.nextInt();
+                peminjaman.setBanyak(banyak);
+                if(peminjaman.getBanyak(peminjaman.getIDBanyak(banyak))<=buku.getStok(ID)){
+                    buku.setStok(ID, buku.getStok(ID)-banyak);
+                    System.out.println("Terinakasih telah membeli buku "+buku.getNama(ID));
+                    System.out.println("Ketik apapun dan enter untuk keluar");
+                    key = input.next();
+                }
+                else{
+                    System.out.println("Jumlah yang anda inginkan melebihi stok");
+                    System.out.println("Ketik apapun dan enter untuk keluar");
+                    key = input.next();
+                }
                 buku.setStok(ID, buku.getStok(ID)-1);
                 System.out.println("Terinakasih telah membeli buku "+buku.getNama(ID));
                 System.out.println("Ketik apapun dan enter untuk keluar");
@@ -86,11 +97,10 @@ public class main {
                 System.out.println("Masukkan id buku yang ingin anda kembalikan");
                 int ID = input.nextInt();
                 if(siswa.getStataus(id)==false){
-                    if(peminjaman.getBuku(ID)==false){
+                    if(peminjaman.getBuku(ID)==0){
                         buku.setStok(ID, buku.getStok(ID)+1);
                         System.out.println("Terimakasih telah mengembalikan buku "+buku.getNama(ID));
                         siswa.setStatus(id, true);
-                        peminjaman.setBuku(ID, true);
                         System.out.println("Ketik apapun dan enter untuk keluar");
                         key = input.next();
                     }
