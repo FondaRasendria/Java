@@ -25,15 +25,17 @@ public class main {
         if(jawab.equalsIgnoreCase("y")){
             System.out.println("Masukkan ID Anda");
             int id = input.nextInt();
-            System.out.println("Selamat Datang "+client.getNama(id));
-            System.out.println("ID anda "+transaksi.getIDClient(id));
+            System.out.println("Selamat Datang "+client.getNama(transaksi.getClient(id)));
+            System.out.println("ID anda "+id);
             menu(id);
         }
         else{
             System.out.println("Masukkan Nama");
             String nama = input.next();
             client.setNama(nama);
-            transaksi.setIDClient(transaksi.size());
+            System.out.println("Masukkan ID untuk anda");
+            int Id = input.nextInt();
+            transaksi.setIDClient(Id);
             System.out.println("Masukkan Alamat");
             String alamat = input.next();
             client.setAlamat(alamat);
@@ -44,9 +46,9 @@ public class main {
             int saldo = input.nextInt();
             client.addSaldo(saldo);
             System.out.println("Terimakasih telah mendaftar "+nama);
-            int i = client.getId(nama);
-            System.out.println("ID Anda "+transaksi.getIDClient(i));
-            menu(i);
+            int id = transaksi.getIDClient(client.getId(nama));
+            System.out.println("ID anda "+id);
+            menu(id);
         }
     }
     
@@ -92,7 +94,8 @@ public class main {
                 int laundry = input.nextInt();
                 System.out.println("Masukkan berapa banyak laundry anda");
                 int banyak = input.nextInt();
-                int harga = jenislaundry.getHarga(laundry-1)*banyak;
+                transaksi.setBanyak(banyak);
+                int harga = jenislaundry.getHarga(transaksi.getIDJenisLaundry(laundry))*transaksi.getBanyak(transaksi.getIDBanyak(banyak));
                 if(client.getSaldo(id)>=harga){
                     System.out.println("----------Total----------");
                     System.out.println("Jenis Laundry = "+jenislaundry.getLaundry(laundry));

@@ -24,9 +24,8 @@ public class Transaksi{
     }
     
     public Transaksi(){
-        for(int i=0;i<client.size();i++){
-            this.idClient.add(i);
-        }
+        this.idClient.add(12345);
+        this.idClient.add(54321);
         for(int i=0;i<laundry.size();i++){
             this.idJenisLaundry.add(i);
         }
@@ -44,6 +43,10 @@ public class Transaksi{
         this.banyak.add(banyak);
     }
     
+    public int getClient(int id){
+        return this.idClient.indexOf(id);
+    }
+    
     public int getIDClient(int id){
         return this.idClient.get(id);
     }
@@ -54,6 +57,10 @@ public class Transaksi{
     
     public int getBanyak(int id){
         return this.banyak.get(id);
+    }
+    
+    public int getIDBanyak(int banyak){
+        return this.banyak.indexOf(banyak);
     }
     
 }
