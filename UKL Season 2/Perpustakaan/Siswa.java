@@ -16,7 +16,7 @@ public class Siswa implements User{
     private ArrayList<String> alamat = new ArrayList<String>();
     private ArrayList<String> telepon = new ArrayList<String>();
     private ArrayList<Boolean> status = new ArrayList<Boolean>();
-    
+    //auto bekerja
     public Siswa(){
         this.namaSiswa.add("Fonda");
         this.alamat.add("Kediri");

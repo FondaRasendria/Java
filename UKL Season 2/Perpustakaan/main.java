@@ -15,7 +15,9 @@ public class main {
     static Peminjaman peminjaman = new Peminjaman();
     static Petugas petugas = new Petugas();
     static Siswa siswa = new Siswa();
+    
     static Scanner input = new Scanner(System.in);
+    
     static boolean tetap = true;
     static String key;
     
@@ -27,6 +29,7 @@ public class main {
     public static void menu(){
         System.out.println("Masukkan ID Siswa");
         int id = input.nextInt();
+        int BukuPinjaman = 4;
         System.out.println("Selamat datang "+siswa.getNama(peminjaman.getIDSiswa(id)));
         while(tetap){
             System.out.println("-- Perpustakaan --");
@@ -60,8 +63,9 @@ public class main {
                 int ID = input.nextInt();
                 if(siswa.getStataus(ID)==true){
                     buku.setStok(ID, buku.getStok(ID)-1);
+                    BukuPinjaman = ID;
                     System.out.println("Terimakasih telah meminjam buku "+buku.getNama(ID));
-                    siswa.setStatus(id, false);
+                    siswa.setStatus(peminjaman.getIDSiswa(id), false);
                     System.out.println("Ketik apapun dan enter untuk keluar");
                     key = input.next();
                 }
@@ -88,19 +92,15 @@ public class main {
                     System.out.println("Ketik apapun dan enter untuk keluar");
                     key = input.next();
                 }
-                buku.setStok(ID, buku.getStok(ID)-1);
-                System.out.println("Terinakasih telah membeli buku "+buku.getNama(ID));
-                System.out.println("Ketik apapun dan enter untuk keluar");
-                key = input.next();
             }
             else if(menu==6){
                 System.out.println("Masukkan id buku yang ingin anda kembalikan");
                 int ID = input.nextInt();
-                if(siswa.getStataus(id)==false){
-                    if(peminjaman.getBuku(ID)==0){
+                if(siswa.getStataus(peminjaman.getIDSiswa(id))==false){
+                    if(peminjaman.getBuku(ID)==BukuPinjaman){
                         buku.setStok(ID, buku.getStok(ID)+1);
                         System.out.println("Terimakasih telah mengembalikan buku "+buku.getNama(ID));
-                        siswa.setStatus(id, true);
+                        siswa.setStatus(peminjaman.getIDSiswa(id), true);
                         System.out.println("Ketik apapun dan enter untuk keluar");
                         key = input.next();
                     }
@@ -121,6 +121,8 @@ public class main {
             }
             else{
                 System.out.println("Input anda salah");
+                System.out.println("Ketik apapun dan enter untuk keluar");
+                key = input.next();
             }
         }
     }
