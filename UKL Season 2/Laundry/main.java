@@ -95,13 +95,13 @@ public class main {
                 System.out.println("Masukkan berapa banyak laundry anda");
                 int banyak = input.nextInt();
                 transaksi.setBanyak(banyak);
-                int harga = jenislaundry.getHarga(transaksi.getIDJenisLaundry(laundry))*transaksi.getBanyak(transaksi.getIDBanyak(banyak));
-                if(client.getSaldo(id)>=harga){
+                int harga = jenislaundry.getHarga(transaksi.getIDJenisLaundry(laundry))*banyak;
+                if(client.getSaldo(transaksi.getClient(id))>=harga){
                     System.out.println("----------Total----------");
                     System.out.println("Jenis Laundry = "+jenislaundry.getLaundry(laundry));
                     System.out.println("Total Harga   = "+harga);
-                    System.out.println("Durasi        = "+jenislaundry.getDurasi(laundry-1)+" menit");
-                    client.setSaldo(id, client.getSaldo(id)-harga);
+                    System.out.println("Durasi        = "+jenislaundry.getDurasi(laundry)+" menit");
+                    client.setSaldo(transaksi.getClient(id), client.getSaldo(transaksi.getClient(id))-harga);
                     System.out.println("Terimakasih telah menggunkaan jasa kami");
                     System.out.println("Ketik apapun dan enter untuk kembali");
                     key = input.next();

@@ -15,8 +15,7 @@ public class Transaksi{
     private ArrayList<Integer> idClient = new ArrayList<Integer>();
     private ArrayList<Integer> idJenisLaundry = new ArrayList<Integer>();
     private ArrayList<Integer> banyak = new ArrayList<Integer>();
-    
-    public Client client = new Client();
+   
     public JenisLaundry laundry = new JenisLaundry();
     
     public int size(){
